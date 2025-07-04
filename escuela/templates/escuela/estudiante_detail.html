@@ -1,0 +1,40 @@
+{% extends 'escuela/base.html' %}
+
+{% block content %}
+<h4>{{ estudiante.nombre }}</h4>
+
+<div class="row">
+    <div class="col s12 m6">
+        <h5>Asignaturas Inscritas</h5>
+        <ul class="collection">
+            {% for asignatura in asignaturas_inscritas %}
+                <li class="collection-item">
+                    {{ asignatura.nombre }}
+                    <span class="right grey-text">Docente: {{ asignatura.docente.nombre }}</span>
+                </li>
+            {% empty %}
+                <li class="collection-item">El estudiante no está inscrito en ninguna asignatura.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col s12 m6">
+        <h5>Inscribir en Nueva Asignatura</h5>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-field">
+                <select name="asignatura">
+                    <option value="" disabled selected>Elige una asignatura</option>
+                    {% for asignatura in todas_las_asignaturas %}
+                        <option value="{{ asignatura.pk }}">{{ asignatura.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <label>Asignaturas Disponibles</label>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Inscribir</button>
+        </form>
+    </div>
+</div>
+
+<a href="{% url 'estudiante_list' %}" class="btn-flat waves-effect waves-light">Volver a la lista</a>
+{% endblock %}

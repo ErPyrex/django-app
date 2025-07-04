@@ -1,0 +1,32 @@
+{% extends 'escuela/base.html' %}
+
+{% block content %}
+<h4>Docentes</h4>
+
+<div class="row">
+    <div class="col s12 m6">
+        <h5>Listado de Docentes</h5>
+        <ul class="collection">
+            {% for docente in docentes %}
+                <li class="collection-item">
+                    <a href="{% url 'docente_detail' docente.pk %}">{{ docente.nombre }}</a>
+                </li>
+            {% empty %}
+                <li class="collection-item">No hay docentes registrados.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col s12 m6">
+        <h5>Agregar Nuevo Docente</h5>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-field">
+                <input type="text" name="nombre" id="nombre" required>
+                <label for="nombre">Nombre del Docente</label>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Agregar Docente</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

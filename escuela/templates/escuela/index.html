@@ -1,0 +1,45 @@
+{% extends 'escuela/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col s12">
+        <h3 class="center-align">Bienvenido al Sistema de Gestión Escolar</h3>
+    </div>
+</div>
+
+<div class="row center-align">
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Docentes</span>
+                <p>Gestiona los docentes del sistema.</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'docente_list' %}" class="btn waves-effect waves-light">Ir a Docentes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Asignaturas</span>
+                <p>Administra las asignaturas y su docente.</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'asignatura_list' %}" class="btn waves-effect waves-light">Ir a Asignaturas</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Estudiantes</span>
+                <p>Consulta los estudiantes y sus inscripciones.</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'estudiante_list' %}" class="btn waves-effect waves-light">Ir a Estudiantes</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

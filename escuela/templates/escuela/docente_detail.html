@@ -1,0 +1,37 @@
+{% extends 'escuela/base.html' %}
+
+{% block content %}
+<h4>{{ docente.nombre }}</h4>
+
+<div class="row">
+    <div class="col s12 m6">
+        <h5>Asignaturas que Imparte</h5>
+        <ul class="collection">
+            {% for asignatura in docente.asignaturas.all %}
+                <li class="collection-item">{{ asignatura.nombre }}</li>
+            {% empty %}
+                <li class="collection-item">Este docente no imparte ninguna asignatura.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col s12 m6">
+        <h5>Asignar Nueva Asignatura</h5>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-field">
+                <select name="asignatura">
+                    <option value="" disabled selected>Elige una asignatura</option>
+                    {% for asignatura in todas_las_asignaturas %}
+                        <option value="{{ asignatura.pk }}">{{ asignatura.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <label>Asignaturas Disponibles</label>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Asignar</button>
+        </form>
+    </div>
+</div>
+
+<a href="{% url 'docente_list' %}" class="btn-flat waves-effect waves-light">Volver a la lista</a>
+{% endblock %}

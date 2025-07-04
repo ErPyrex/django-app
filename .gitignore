@@ -1,0 +1,39 @@
+# Entorno Virtual
+venv/
+env/
+.env
+
+# Base de datos
+db.sqlite3
+*.sqlite3
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Archivos de registro
+*.log
+
+# Archivos estáticos y de medios (generados por Django)
+/staticfiles/
+/media/
+
+# Artefactos de construcción y distribución
+build/
+dist/
+*.egg-info/
+
+# Reportes de cobertura de tests
+.coverage
+htmlcov/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
